@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block main_container %}
+
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card" data-aos="fade-up">
+                        <div class="card-body">
+                            <div class="aboutus-wrapper">
+                                <h1 class="mt-5 text-center mb-5">
+                                    Login
+                                </h1>
+                                {% for message in messages %}
+                                    <p>{{ message }}</p>
+                                {% endfor %}
+                                <div class="row">
+                                    <div class="col-lg-12 mb-5 mb-sm-2">
+                                        <form method="post" action="{% url 'login' %}">
+                                            {% csrf_token %}
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="username"
+                                                                name="username"
+                                                                aria-describedby="Last Name"
+                                                                placeholder="UserName *"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-6">
+                                                    <div class="form-group">
+                                                        <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="password"
+                                                                name="password"
+                                                                aria-describedby="Password"
+                                                                placeholder="Password *"
+                                                        />
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <button class="btn btn-info" type="submit">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -25,12 +25,21 @@
                         <li class="nav-item">
                             <a href="#" class="nav-link"><i class="mdi mdi-magnify"></i></a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Sign in</a>
-                        </li>
+                        {% if request.user.is_authenticated %}
+                            <li class="nav-item">
+                                <p class="nav-link">Hi, {{ request.user.username }}</p>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a href="{% url 'login' %}" class="nav-link">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{% url 'register' %}" class="nav-link">Register</a>
+                            </li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
